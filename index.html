@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Ilina Mukherjee">
+<meta property="og:description" content="Student researcher building science and technology with real partners for people who are often left out. Research, projects, leadership and classical music.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e8820c'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='%23fff' text-anchor='middle'%3EIM%3C/text%3E%3C/svg%3E">
+<title>Ilina Mukherjee</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Ilina Mukherjee: student researcher building science and technology with real partners for people who are often left out. Medical AI, speech AI, assistive robotics, audio research, classical piano.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root { color-scheme: light; }
+
+/* Layout: one centered column (max 1120px), sticky top bar, sections alternate plain / faint band. Off-white ground, one orange accent, cream cards, mono details. */
+:root {
+  --bg: #fafafa;
+  --band: #f4f4f2;
+  --surface: #ffffff;
+  --card: #f8f3ea;
+  --card-line: #f0e0c6;
+  --fg: #17181b;
+  --muted: #5d6066;
+  --line: #e4e4e1;
+  --accent: #e8820c;
+  --accent-ink: #b45f00;
+  --accent-soft: #fcebd3;
+  --dark-btn: #17181b;
+  --dark-btn-fg: #ffffff;
+  --display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.65; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+img { display: block; max-width: 100%; }
+
+.wrap { max-width: 1120px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+
+/* Top bar */
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 16px; }
+.brand { font-family: var(--display); font-weight: 800; font-size: 21px; text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
+nav { display: flex; gap: 26px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+nav::-webkit-scrollbar { display: none; }
+nav a { text-decoration: none; color: var(--muted); font-size: 15px; white-space: nowrap; transition: color .15s; }
+nav a:hover { color: var(--fg); }
+
+/* Hero */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); gap: 56px; align-items: center; padding-block: 96px 88px; }
+.eyebrow { font-family: var(--mono); color: var(--accent-ink); font-size: 15px; margin: 0 0 18px; }
+.hero h1 { font-size: clamp(46px, 7.2vw, 76px); line-height: 1.02; font-weight: 800; letter-spacing: -0.025em; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.tagline { font-family: var(--mono); font-size: 13.5px; color: var(--muted); margin: 18px 0 0; }
+.lede { font-size: 19px; color: var(--muted); max-width: 60ch; margin: 28px 0 0; }
+.lede strong { color: var(--fg); font-weight: 600; }
+.quirk { font-size: 16.5px; color: var(--muted); max-width: 60ch; margin: 16px 0 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 10px; font-family: var(--display); font-weight: 700; font-size: 16px; text-decoration: none; border: 1px solid var(--line); background: var(--surface); color: var(--fg); transition: transform .15s, border-color .15s; }
+.btn:hover { transform: translateY(-1px); border-color: var(--muted); }
+.btn.primary { background: var(--dark-btn); color: var(--dark-btn-fg); border-color: var(--dark-btn); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+
+.portrait { justify-self: end; width: 100%; max-width: 340px; position: relative; }
+.portrait::before { content: ""; position: absolute; inset: -40px; border-radius: 50%; background: radial-gradient(closest-side, var(--accent-soft), transparent); z-index: 0; }
+.portrait .frame { position: relative; z-index: 1; aspect-ratio: 4 / 5; max-width: 100%; border-radius: 22px; border: 6px solid var(--surface); outline: 1.5px solid var(--card-line); background: var(--card); display: grid; place-items: center; text-align: center; color: var(--muted); font-family: var(--mono); font-size: 12.5px; padding: 24px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.3); }
+.portrait .initials { font-family: var(--display); font-size: 84px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 12px; }
+
+.facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--line); }
+.facts div { display: flex; flex-direction: column; }
+.facts b { font-family: var(--display); font-size: 26px; font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.facts span { font-size: 13.5px; color: var(--muted); }
+
+/* Section scaffolding */
+section.band { background: var(--band); }
+.sec { padding-block: 96px; }
+.pill { display: inline-block; font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.03em; color: var(--accent-ink); background: var(--accent-soft); padding: 5px 12px; border-radius: 999px; }
+.sec-head { margin-bottom: 44px; }
+.sec-head h2 { font-size: clamp(32px, 4.6vw, 46px); font-weight: 800; letter-spacing: -0.02em; margin-top: 14px; line-height: 1.08; }
+.sec-head p { color: var(--muted); margin: 12px 0 0; max-width: 64ch; font-size: 17px; }
+.mono { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.links a { font-family: var(--display); font-weight: 700; font-size: 14.5px; color: var(--accent-ink); text-decoration: none; }
+.links a:hover { text-decoration: underline; }
+.links .soon { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+
+/* Lens Project */
+.lens { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 48px; align-items: start; }
+.lens-copy p { margin: 0 0 16px; max-width: 62ch; }
+.lens-copy p.muted { color: var(--muted); }
+.award-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 700; font-size: 15px; padding: 8px 14px; border-radius: 10px; background: var(--card); border: 1px solid var(--card-line); margin-bottom: 22px; }
+.award-tag svg { width: 18px; height: 18px; color: var(--accent); }
+.photos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.photos img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; aspect-ratio: 4 / 3; }
+.photos img.wide { grid-column: span 2; aspect-ratio: 16 / 7; }
+.photos figcaption { grid-column: span 2; font-size: 13px; color: var(--muted); }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 40px; }
+.stat { background: var(--card); border: 1px solid var(--card-line); border-radius: 14px; padding: 18px 20px; }
+.stat b { display: block; font-family: var(--display); font-size: 32px; font-weight: 800; line-height: 1.05; color: var(--accent-ink); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 14px; color: var(--muted); }
+
+/* Research cards */
+.featured { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.r-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; transition: border-color .15s, box-shadow .15s; }
+.r-card:hover { border-color: var(--card-line); box-shadow: 0 18px 40px -26px rgba(0,0,0,.35); }
+.r-card .shot { aspect-ratio: 16 / 9; background: var(--card); border-bottom: 1px solid var(--line); overflow: hidden; }
+.r-card .shot img { width: 100%; height: 100%; object-fit: cover; }
+.r-card .shot.contain img { object-fit: contain; padding: 14px; background: #fff; }
+.r-body { padding: 26px 28px 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.field { color: var(--accent-ink); }
+.status { padding: 2px 9px; border-radius: 999px; border: 1px solid var(--card-line); background: var(--card); color: var(--fg); }
+.r-card h3 { font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: -0.01em; }
+.qf { display: grid; gap: 10px; margin: 0; }
+.qf div { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 12px; }
+.qf dt { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding-top: 4px; }
+.qf dd { margin: 0; font-size: 15px; }
+.r-card .links { margin-top: auto; padding-top: 6px; }
+
+.more { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 24px; }
+.s-card { background: var(--card); border: 1px solid var(--card-line); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.s-card h3 { font-size: 19px; line-height: 1.3; font-weight: 700; }
+.s-card p { margin: 0; color: var(--muted); font-size: 15px; }
+.s-card .links { margin-top: auto; padding-top: 4px; }
+.s-card .thumb { aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #fff; border: 1px solid var(--card-line); }
+.s-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Builds */
+.builds { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.b-card { border-top: 2px solid var(--fg); padding-top: 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.b-card h3 { font-size: 19px; font-weight: 700; }
+.b-card p { margin: 0; color: var(--muted); font-size: 15px; }
+.b-card .result { font-family: var(--mono); font-size: 12.5px; color: var(--accent-ink); }
+.b-card .links { margin-top: auto; }
+
+/* Leadership */
+.lead { max-width: 860px; }
+.rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.rows li { display: grid; grid-template-columns: 110px minmax(0, 1fr) auto; gap: 18px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.rows .date { font-family: var(--mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rows b { font-family: var(--display); font-size: 17.5px; font-weight: 700; display: block; line-height: 1.35; }
+.rows .why { color: var(--muted); font-size: 15px; }
+.rows .lvl { font-family: var(--mono); font-size: 12px; color: var(--accent-ink); white-space: nowrap; }
+.rows .why a { color: var(--accent-ink); }
+.cpr { background: var(--card); border: 1px solid var(--card-line); border-radius: 16px; overflow: hidden; }
+.cpr img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.cpr div { padding: 20px 22px 22px; }
+.cpr h3 { font-size: 19px; margin-bottom: 6px; }
+.cpr p { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* Music & more */
+.piano { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: 44px; align-items: start; }
+.piano-media { display: grid; gap: 10px; }
+.piano-media img { width: 100%; border-radius: 14px; aspect-ratio: 16 / 9; object-fit: cover; }
+.piano-media figcaption { font-size: 13px; color: var(--muted); }
+.piano-copy > p { margin: 0 0 20px; max-width: 60ch; }
+.sub { font-family: var(--display); font-size: 24px; font-weight: 800; letter-spacing: -0.01em; margin: 64px 0 20px; }
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+.gallery img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 10px; }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 48px; align-items: start; }
+.contact h2 { font-size: clamp(32px, 4.6vw, 46px); font-weight: 800; letter-spacing: -0.02em; margin-top: 14px; }
+.contact p { color: var(--muted); max-width: 50ch; font-size: 17px; }
+.c-list { display: grid; gap: 12px; }
+.c-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; min-width: 0; }
+.c-row > div { min-width: 0; }
+.c-row small { display: block; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.c-row .val { font-weight: 600; overflow-wrap: anywhere; }
+.c-row a { color: var(--accent-ink); font-weight: 600; text-decoration: none; font-size: 14px; white-space: nowrap; }
+.copy { font: 600 13px var(--body); border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+
+footer .wrap { padding-block: 30px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); }
+
+@media (max-width: 960px) {
+  .builds { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 880px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 48px; padding-block: 56px 64px; }
+  .portrait { justify-self: start; max-width: 260px; }
+  .lens, .featured, .more, .lead, .piano, .contact, .trio { grid-template-columns: 1fr; }
+  .sec { padding-block: 64px; }
+}
+@media (max-width: 640px) {
+  header .wrap { flex-direction: column; align-items: stretch; gap: 10px; padding-block: 12px; }
+  nav { gap: 20px; }
+  .rows li { grid-template-columns: 1fr; gap: 3px; }
+  .qf div { grid-template-columns: 1fr; gap: 2px; }
+  .builds { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .r-body { padding: 22px; }
+}
+.r-card.wide { flex-direction: row; }
+.r-card.wide .shot { flex: 0 0 44%; aspect-ratio: auto; border-bottom: 0; border-right: 1px solid var(--line); display: grid; place-items: center; background: #fff; }
+.r-card.wide .shot img { height: auto; }
+.more.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.lens-head { display: flex; flex-direction: column; gap: 6px; margin-bottom: 24px; }
+@media (max-width: 880px) {
+  .r-card.wide { flex-direction: column; }
+  .r-card.wide .shot { border-right: 0; border-bottom: 1px solid var(--line); }
+  .more.two { grid-template-columns: 1fr; }
+}
+.art-award { background: var(--card); border: 1px solid var(--card-line); border-radius: 16px; padding: 22px 24px; display: flex; flex-direction: column; gap: 8px; max-width: 760px; margin-bottom: 28px; }
+.art-award h3 { font-size: 20px; }
+.art-award p { margin: 0; color: var(--muted); font-size: 15px; }
+.gallery figure { margin: 0; border-radius: 12px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); }
+.gallery img { border-radius: 0; transition: transform .3s; }
+.gallery figure:hover img { transform: scale(1.03); }
+.archive { display: grid; gap: 12px; max-width: 860px; }
+.archive details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+.archive details[open] { border-color: var(--card-line); }
+.archive summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 18px 22px; font-family: var(--display); font-weight: 700; font-size: 18px; }
+.archive summary::-webkit-details-marker { display: none; }
+.archive summary::after { content: "+"; margin-left: auto; font-family: var(--mono); font-weight: 400; font-size: 20px; color: var(--accent-ink); transition: transform .2s; }
+.archive details[open] summary::after { transform: rotate(45deg); }
+.archive summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 14px; }
+.archive .count { font-family: var(--mono); font-size: 12px; font-weight: 400; color: var(--muted); background: var(--band); border-radius: 999px; padding: 2px 9px; }
+.archive .rows { margin: 0 22px 8px; }
+.archive .rows li:last-child { border-bottom: 0; }
+.more.one { grid-template-columns: 1fr; }
+.featured.three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.featured.three .r-body { padding: 22px 22px 24px; }
+.featured.three .r-card h3 { font-size: 19.5px; }
+.featured.three .qf div { grid-template-columns: 1fr; gap: 2px; }
+@media (max-width: 1000px) { .featured.three { grid-template-columns: 1fr; } .featured.three .qf div { grid-template-columns: 74px minmax(0, 1fr); gap: 12px; } }
+@media (max-width: 640px) { .featured.three .qf div { grid-template-columns: 1fr; gap: 2px; } }
+</style>
+
+<style>html,body{margin:0}</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<a class="brand" href="#top">Ilina</a>
+<nav aria-label="Sections">
+<a href="#research">Research &amp; Projects</a>
+<a href="#leadership">Leadership</a>
+<a href="#music">Classical Music</a>
+<a href="#art">Painting</a>
+<a href="#more">Writing &amp; Taekwondo</a>
+<a href="#recognition">Recognition</a>
+<a href="#earlier">Earlier Work</a>
+<a href="#contact">Contact</a>
+</nav>
+</div>
+</header>
+<main id="top">
+<section class="hero">
+<div class="wrap">
+<div>
+<p class="eyebrow">build(for: people_left_out)</p>
+<h1>I'm <em>Ilina</em><br/>Mukherjee</h1>
+<p class="tagline">IB Diploma, Grade 12 · The International School Bangalore</p>
+<p class="lede">Eye care. Speech AI. A wheelchair that listens. I build science and technology with real partners, for people who are often left out: elders in rural Bengal, leprosy survivors, a young woman with cerebral palsy, and my own grandparents. Right now I'm working with our partner eye hospital to take <strong>my phone-based cataract screening AI</strong> from eye camps to village kiosks.</p>
+<p class="quirk">When I'm not building, I'm at the piano (twelve years, two international Grand Prizes, one Royal Albert Hall stage) or on the mat as a 2nd Dan black belt in Taekwondo.</p>
+<div class="actions">
+<a class="btn primary" href="#research">Research &amp; Projects
+            <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"></path></svg></a>
+<a class="btn" href="#contact">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"></rect><path d="m3 7 9 6 9-6"></path></svg>Get in Touch</a>
+</div>
+<div class="facts">
+<div><b>800+</b><span>eye surgeries funded</span></div>
+<div><b>ACCV ’26</b><span>ML paper, oral talk</span></div>
+<div><b>Diana Award</b><span>2026</span></div>
+</div>
+</div>
+<div class="portrait">
+<div class="frame"><div><div class="initials">IM</div></div></div>
+</div>
+</div>
+</section>
+<section class="band" id="research">
+<div class="wrap sec">
+<div class="sec-head">
+<span class="pill">Research &amp; Projects</span>
+<h2>Questions I've chased</h2>
+<p>University research, papers and working projects with hospitals and community partners. Most of it started with a person I knew who needed something that didn't exist yet.</p>
+</div>
+<h3 class="sub" style="margin-top:0">Research</h3>
+<div class="featured three">
+<article class="r-card">
+<div class="shot contain"><img alt="Chart of angular mismatch against angle of arrival for one listener" loading="lazy" src="chart-of-angular-mismatch-against.jpg"/></div>
+<div class="r-body">
+<div class="meta"><span class="field">Audio &amp; Signal Processing</span><span>2026</span><span class="status">Research · UIUC</span></div>
+<h3>Learning Personalized HRTFs from Binaural Recordings</h3>
+<dl class="qf">
+<div><dt>Question</dt><dd>Can personalised 3D audio be learned from a cheap pair of microphones, as a first step towards hearing aids tuned to each person's ears?</dd></div>
+<div><dt>Method</dt><dd>Recorded sound at both ears from marked angles and estimated head-related transfer functions two ways: broadband least squares and per-frequency cross-correlation.</dd></div>
+<div><dt>Finding</dt><dd>Listeners placed the synthesised sound within about 10° (±5°) of its true direction at most angles.</dd></div>
+<div><dt>Role</dt><dd>Student researcher, SINRG, University of Illinois Urbana-Champaign, with Prof. Romit Roy Choudhury.</dd></div>
+</dl>
+<div class="links"><a href="https://ilinamukherjee.github.io/hrtf/" rel="noopener" target="_blank">Project page and audio demos →</a></div>
+</div>
+</article>
+<article class="r-card">
+<div class="shot contain"><img alt="Research poster: orbit determination of asteroid 2015 GF27, orbital elements" loading="lazy" src="research-poster-orbit-determination-of.jpg"/></div>
+<div class="r-body">
+<div class="meta"><span class="field">Astrophysics</span><span>Summer 2026</span><span class="status">Research · SSP</span></div>
+<h3>Orbit Determination of Near-Earth Asteroid 2015 GF27</h3>
+<dl class="qf">
+<div><dt>Question</dt><dd>Where is near-Earth asteroid 2015 GF27 headed, working only from a few telescope observations?</dd></div>
+<div><dt>Method</dt><dd>From three observations taken at the LCO McDonald Observatory, Texas, I used the Method of Gauss to compute the asteroid's position and velocity and derive its six classical orbital elements.</dd></div>
+<div><dt>Finding</dt><dd>Our team predicted the preliminary orbit, with uncertainty estimated by Monte Carlo simulation, and presented it at the University of Wisconsin–River Falls.</dd></div>
+<div><dt>Program</dt><dd>Summer Science Program, one of the most selective in the US (about 5% acceptance). Mentors: Dr. Truong Le, Dr. Marta McNeese, Dr. Michael Rodruck.</dd></div>
+</dl>
+<div class="links"><a href="https://drive.google.com/file/d/18Oiz0gp4LlJ98wKaecEONuMPaBgeA8JT/view?usp=sharing" rel="noopener" target="_blank">Read the paper →</a></div>
+</div>
+</article>
+<article class="r-card">
+<div class="shot"><img alt="Workshop programme listing the paper at TrustFMI, ACCV 2026" loading="lazy" src="workshop-programme-listing-the-paper.jpg"/></div>
+<div class="r-body">
+<div class="meta"><span class="field">Medical AI</span><span>2026</span><span class="status">Research · Oral</span></div>
+<h3>Diagnostic-Language Dependence and Robustness in Multimodal Medical LLMs</h3>
+<dl class="qf">
+<div><dt>Question</dt><dd>When AI models diagnose chest X-rays, are they reading the image, or the words in the report next to it?</dd></div>
+<div><dt>Method</dt><dd>Evaluated five multimodal models on 657 CheXpert Plus cases, removing diagnostic terms from reports and testing 29 controlled perturbations.</dd></div>
+<div><dt>Finding</dt><dd>With diagnostic terms removed, accuracy fell to 16% even with the image present. Demographic changes caused the largest spurious flips.</dd></div>
+<div><dt>Venue</dt><dd>TrustFMI workshop at ACCV 2026, Springer LNCS. Oral presentation in Osaka, Japan.</dd></div>
+</dl>
+<div class="links"><a href="https://drive.google.com/file/d/1aq1G6MgDZA5KTs7-mH-V-oBKUtbuUT-U/view?usp=sharing" rel="noopener" target="_blank">Read the paper →</a></div>
+</div>
+</article>
+</div>
+<h3 class="sub">Projects</h3>
+<div class="featured three">
+<article class="r-card">
+<div class="shot"><img alt="Clear Voice app on a phone showing the transcript My leg is hurting" loading="lazy" src="clear-voice-app-on-a.jpg" style="object-position:50% 70%"/></div>
+<div class="r-body">
+<div class="meta"><span class="field">Speech AI</span><span>Grade 12</span><span class="status">Project · Demo</span></div>
+<h3>Clear Voice: speech recognition for cerebral palsy</h3>
+<dl class="qf">
+<div><dt>Question</dt><dd>A standard recogniser turned "My leg is hurting" into "Why do you hate me?" Could AI understand a young woman with dysarthria well enough to replace an exam scribe?</dd></div>
+<div><dt>Method</dt><dd>Wrote 149 everyday sentences around her hardest words, recorded 16.7 minutes at home, and fine-tuned Whisper to her voice with five-fold cross-validation.</dd></div>
+<div><dt>Finding</dt><dd>Word errors fell from 30.0% to 6.6%, and to 5.9% on a later day. 78% of sentences now come out word-perfect.</dd></div>
+<div><dt>Partner</dt><dd>Spastics Society of Karnataka. Next: a framework so parents can record data at home for other students.</dd></div>
+</dl>
+<div class="links"><a href="https://drive.google.com/file/d/1HXpLTpuE2mThOoaPb94zAbG1dDELaONd/view?usp=sharing" rel="noopener" target="_blank">Demo video →</a><a href="https://www.youtube.com/watch?v=IZqWCctPHkk" rel="noopener" target="_blank">Presentation →</a></div>
+</div>
+</article>
+<article class="r-card">
+<div class="shot"><img alt="Wheelchair electronics under the seat: batteries, Raspberry Pi and motor drivers" loading="lazy" src="wheelchair-electronics-under-the-seat.jpg"/></div>
+<div class="r-body">
+<div class="meta"><span class="field">Assistive Robotics</span><span>Grade 12</span><span class="status">Project · Demo</span></div>
+<h3>Voice-controlled semi-autonomous wheelchair</h3>
+<dl class="qf">
+<div><dt>Question</dt><dd>When my grandfather lost the ability to walk, he could only move when someone was free to push him. Could an ordinary wheelchair drive itself to a room when you say its name?</dd></div>
+<div><dt>Method</dt><dd>Added two 250 W geared motors with Arduino control, and a Raspberry Pi 5 that interprets room names with a language model and plans routes on a floor-plan graph by dead reckoning.</dd></div>
+<div><dt>Finding</dt><dd>Holds 0.31 m/s with 0.6% variation and predicts distance within 1% over 9.2 m. Built for ₹48,500 and in supervised daily use.</dd></div>
+<div><dt>Role</dt><dd>Designed and built it, with guidance from Prof. Ratna Ghosh, Jadavpur University. Submitted to IRIS.</dd></div>
+</dl>
+<div class="links"><a href="https://drive.google.com/file/d/1wkJspYAqqwswb9IJQ2bcus_u2PSNT26H/view?usp=drive_link" rel="noopener" target="_blank">Demo 1 →</a><a href="https://drive.google.com/file/d/1aZi6sj6fNt8YQVYw_Z_qweJw13LW94hF/view?usp=drive_link" rel="noopener" target="_blank">Demo 2 →</a><a href="https://drive.google.com/file/d/1I3gooFDFP-QpgpEA4OJfLALA5cXejqqf/view?usp=drive_link" rel="noopener" target="_blank">Demo 3 →</a><a href="https://www.youtube.com/watch?v=Rbm17Zgus-0" rel="noopener" target="_blank">Presentation →</a></div>
+</div>
+</article>
+<article class="r-card" id="cataract">
+<div class="shot"><img alt="An eye examination at a Lens Project camp" loading="lazy" src="an-eye-examination-at-a.jpg"/></div>
+<div class="r-body">
+<div class="meta"><span class="field">Medical AI</span><span>Grade 11 – now</span><span class="status">Project · Demo soon</span></div>
+<h3>Phone-based AI cataract screening</h3>
+<dl class="qf">
+<div><dt>Question</dt><dd>At our eye camps, hundreds of villagers queue for a few doctors. Could a phone screen for cataract without a slit-lamp microscope?</dd></div>
+<div><dt>Method</dt><dd>Collected 300+ images at the partner hospital, designed an imaging set-up from a 25D lens, an LED and a smartphone, and trained a CNN on dilated eyes.</dd></div>
+<div><dt>Finding</dt><dd>Detects Grade 2 and Grade 3 cataract with about 90% accuracy. Camp doctors approved it, and I trained village volunteers to use it.</dd></div>
+<div><dt>Next</dt><dd>The hospital has a roadmap to deploy it as kiosks at stations and village centres.</dd></div>
+</dl>
+<div class="links"><span class="soon">Demo coming soon</span></div>
+</div>
+</article>
+</div>
+<div class="more one">
+<article class="s-card">
+<div class="meta"><span class="field">Quantum Mathematics</span><span>Summer 2026</span></div>
+<h3>MathQuantum Fellow, University of Maryland</h3>
+<p>Selected for the high school cohort of MathQuantum, an NSF-funded research training program. Studied the mathematics of qubits and quantum computing and completed a faculty-mentored project, building on the university-level math I taught myself for my HRTF research.</p>
+<div class="links"><a href="https://mathquantum.umd.edu/fellowship/" rel="noopener" target="_blank">About the program →</a></div>
+</article>
+</div>
+</div>
+</section>
+<section id="leadership">
+<div class="wrap sec">
+<div class="sec-head">
+<span class="pill">Leadership</span>
+<h2>Bringing others in</h2>
+<p>I lead by building teams: doctors and village youth for The Lens Project, and students, especially girls, in coding, writing and math at school.</p>
+</div>
+<div class="lens-head">
+<h3 class="sub" style="margin-top:0">The Lens Project</h3>
+<span class="mono">Founder · 2021 – now · Free eye care for elderly villagers and leprosy survivors in rural West Bengal</span>
+</div>
+<div class="lens">
+<div class="lens-copy">
+<div class="award-tag"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="9" r="6"></circle><path d="m8.5 14-1.5 8 5-3 5 3-1.5-8"></path></svg>Diana Award, 2026</div>
+<p>My grandparents, both doctors, served their village community for decades. On visits I saw elders lose their livelihoods to failing eyesight, and leprosy survivors turned away by stigma. When age brought my grandparents' service to a close, I started The Lens Project in Grade 8 to carry it on.</p>
+<p>I built a team of doctors, village youth and village councillors to run eye camps twice a year, and I raise the funds for cataract surgery, lenses, medicines and post-operative care, delivered with Vivekananda Mission Ashram Eye Hospital, Midnapur. In the early years villagers doubted we were apolitical. Repeated visits and honest conversations won their trust.</p>
+<p class="muted">Turnout has grown from about 450 patients per camp in 2023 to about 700 in 2025. When I leave for college in 2027, a core group of 15 village youth will run the camps on the ground while I manage fundraising and logistics online and return for at least one camp a year.</p>
+<div class="links"><a href="https://www.thelensproject.in/" rel="noopener" target="_blank">thelensproject.in ↗</a><a href="#cataract">The cataract screening AI ↑</a></div>
+</div>
+<figure class="photos" style="margin:0">
+<img alt="Elderly women at a Lens Project eye camp in rural West Bengal" class="wide" loading="lazy" src="elderly-women-at-a-lens.jpg"/>
+<img alt="The Lens Project volunteer team" class="wide" loading="lazy" src="the-lens-project-volunteer-team.jpg"/>
+<figcaption>Eye camps and the volunteer team in rural West Bengal</figcaption>
+</figure>
+</div>
+<div class="stats">
+<div class="stat"><b>4,500+</b><span>people assessed</span></div>
+<div class="stat"><b>800+</b><span>cataract and complex eye surgeries</span></div>
+<div class="stat"><b>4,000+</b><span>given medicines and spectacles</span></div>
+<div class="stat"><b>200</b><span>leprosy survivors treated</span></div>
+</div>
+<h3 class="sub">At school</h3>
+<div class="lead">
+<ul class="rows">
+<li><span class="date">2023</span><div><b>Technovation Girls Regional Finalist, Mitera</b><span class="why">Built Mitera, a women's health app, and reached the regional finals of a global competition across 120+ countries (top 6 of 1,000+ teams). Afterwards I brought more girls at my school into the program.</span></div><span class="lvl">Coding</span></li>
+<li><span class="date">Grades 9–10</span><div><b>Secretary, Cyber Club, NPS HSR</b><span class="why">First female Secretary, after serving as Deputy. Set recursion and dynamic-programming problems and organised the Cybernautica hackathon for 40+ coders.</span></div><span class="lvl">Coding</span></li>
+<li><span class="date">Grade 10</span><div><b>Event Head, LitUp</b><span class="why">Led an inter-school literary event for about 20 schools and 200 selected participants.</span></div><span class="lvl">Writing</span></li>
+<li><span class="date">2022 – 25</span><div><b>Creative Writing Editor, school magazine</b><span class="why">Four years on the NPS HSR editorial team, ending as editor for creative writing.</span></div><span class="lvl">Writing</span></li>
+<li><span class="date">2026</span><div><b>Head of PR &amp; Communications, PiTHON</b><span class="why">Organising committee of TISB's maths festival, with 300+ participants.</span></div><span class="lvl">Math</span></li>
+<li><span class="date">2026</span><div><b>Head of Sponsors, TEDx TISB</b><span class="why">Also coordinated the middle-school Digits of Pi competition.</span></div><span class="lvl">Events</span></li>
+</ul>
+</div>
+</div>
+</section>
+<section class="band" id="music">
+<div class="wrap sec">
+<div class="sec-head">
+<span class="pill">Classical Music</span>
+<h2>Twelve years at the piano</h2>
+</div>
+<div class="piano">
+<figure class="piano-media" style="margin:0">
+<img alt="Performing on stage at the Royal Albert Hall, London, with prize certificates" loading="lazy" src="performing-on-stage-at-the.jpg"/>
+<img alt="Piano performances on stage" loading="lazy" src="piano-performances-on-stage.jpg"/>
+<figcaption>On stage at the Royal Albert Hall, London, 2023</figcaption>
+</figure>
+<div class="piano-copy">
+<p>I've trained in classical piano since I was five, for twelve years under Professor Natalia Kapilova. Music is where I balance logic with creativity. It even led to my IB Physics Extended Essay, which uses Fourier analysis to study the sound of Bach cadences.</p>
+<ul class="rows">
+<li><span class="date">2023</span><div><b>Grand Prize, Virtuoso International</b><span class="why">Performed the winning piece at the Royal Albert Hall, London. <a href="https://drive.google.com/file/d/1HO25Z0VCx1OcugVexg9c-0Mq-OwzX2hS/view?usp=sharing" rel="noopener" target="_blank">Watch the performance ↗</a></span></div><span class="lvl">International</span></li>
+<li><span class="date">2022</span><div><b>Grand Prize, Virtuoso International</b><span class="why">Invited to perform at the Mozarteum, Salzburg.</span></div><span class="lvl">International</span></li>
+<li><span class="date">2024</span><div><b>3rd Prize, Gold International Classical Music Competition</b><span class="why">Piano, Category IV.</span></div><span class="lvl">International</span></li>
+<li><span class="date">2024</span><div><b>LCM Grade 8 with Distinction</b><span class="why">London College of Music's highest graded exam. 100/100 in Grade 6 and High Achiever Awards along the way.</span></div><span class="lvl">Exam</span></li>
+<li><span class="date">2025</span><div><b>Public performance, Bangalore International Centre</b><span class="why">I also play in the TISB band and at school events.</span></div><span class="lvl">Performance</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="art">
+<div class="wrap sec">
+<div class="sec-head">
+<span class="pill">Painting</span>
+<h2>Painting</h2>
+<p>Painting is where I slow down and look closely. I work mostly in watercolour, with portraits, people at work and wildlife.</p>
+</div>
+<div class="art-award">
+<div class="meta"><span class="field">National 1st</span><span>2021</span></div>
+<h3>Eco-Awareness Art Competition, Government of India</h3>
+<p>First place nationally, from the Department of Environment, Forest and Climate Change with the Maharashtra Forest Department.</p>
+<div class="links"><a href="https://drive.google.com/drive/folders/1Ul6aC0QXvij5ePBqlDwV1AgwtQoa67Jk?usp=sharing" rel="noopener" target="_blank">Full art portfolio →</a></div>
+</div>
+<div class="gallery">
+<figure><img alt="Watercolour: a girl carrying a woven basket on her head" loading="lazy" src="watercolour-a-girl-carrying-a.jpg"/></figure>
+<figure><img alt="Watercolour: an elephant and her calf" loading="lazy" src="watercolour-an-elephant-and-her.jpg"/></figure>
+<figure><img alt="Painting: a cubist-style portrait of a woman in bold colour" loading="lazy" src="painting-a-cubist-style-portrait.jpg"/></figure>
+<figure><img alt="Watercolour: a woman carrying a child along the shore" loading="lazy" src="watercolour-a-woman-carrying-a.jpg"/></figure>
+</div>
+</div>
+</section>
+<section class="band" id="more">
+<div class="wrap sec">
+<div class="sec-head">
+<span class="pill">Outside the lab</span>
+<h2>Writing and Taekwondo</h2>
+</div>
+<div class="trio">
+<article class="s-card"><div class="meta"><span class="field">Writing</span><span>2022</span></div><h3>Grand Winner, Katha Utsav</h3><p>Young Writer's Award at India's biggest festival for young writers.</p></article>
+<article class="s-card"><div class="meta"><span class="field">Writing</span><span>2022</span></div><h3>Times NIE published student author</h3><p>One of 100 students chosen across the state, and later creative writing editor of my school magazine.</p></article>
+<article class="s-card"><div class="meta"><span class="field">Taekwondo</span><span>2019</span></div><h3>2nd Dan black belt</h3><p>Earned through World Taekwondo grading examinations.</p></article>
+</div>
+</div>
+</section>
+<section id="recognition">
+<div class="wrap sec">
+<div class="sec-head">
+<span class="pill">Recognition</span>
+<h2>Awards &amp; selections</h2>
+</div>
+<ul class="rows">
+<li><span class="date">2026</span><div><b>The Diana Award</b><span class="why">For The Lens Project. Honours young people for social action and humanitarian work.</span></div><span class="lvl">Social impact</span></li>
+<li><span class="date">2026</span><div><b>Summer Science Program, Astrophysics</b><span class="why">One of the most selective summer research programs in the US, about 5% acceptance.</span></div><span class="lvl">Research</span></li>
+<li><span class="date">2026</span><div><b>MathQuantum Fellow, University of Maryland</b><span class="why">NSF-funded program in the mathematics of quantum information science.</span></div><span class="lvl">Research</span></li>
+<li><span class="date">2026</span><div><b>Paper accepted, TrustFMI @ ACCV 2026</b><span class="why">Selected for oral presentation in Osaka, Japan.</span></div><span class="lvl">Publication</span></li>
+<li><span class="date">2022–24</span><div><b>Two Grand Prizes, Virtuoso International · 3rd Prize, Gold International</b><span class="why">Royal Albert Hall, London and the Mozarteum, Salzburg.</span></div><span class="lvl">Piano</span></li>
+<li><span class="date">2023</span><div><b>Technovation Girls Regional Finalist</b><span class="why">Top 6 of 1,000+ teams in a global competition across 120+ countries.</span></div><span class="lvl">Coding</span></li>
+<li><span class="date">2022</span><div><b>Grand Winner, Katha Utsav · Times NIE student author</b><span class="why">National writing honours.</span></div><span class="lvl">Writing</span></li>
+<li><span class="date">2021</span><div><b>National 1st, Eco-Awareness Art Competition</b><span class="why">Government of India.</span></div><span class="lvl">Painting</span></li>
+<li><span class="date">2019</span><div><b>2nd Dan black belt, World Taekwondo</b><span class="why">Earned through grading examinations.</span></div><span class="lvl">Taekwondo</span></li>
+</ul>
+</div>
+</section>
+<section class="band" id="earlier">
+<div class="wrap sec">
+<div class="sec-head">
+<span class="pill">Earlier Work</span>
+<h2>Where it started</h2>
+<p>Before Grade 11: the competitions and builds where I first learned to code, compete and ask questions.</p>
+</div>
+<div class="archive">
+<details>
+<summary><span>Coding &amp; Robotics</span><span class="count">3</span></summary>
+<ul class="rows">
+<li><span class="date">2024</span><div><b>DermDetect, StudentHacks</b><span class="why">Deep-learning app (VGG-16) that classifies skin lesions as benign or malignant. Top 100 of 3,000 at the IBM-sponsored hackathon.</span></div><span class="lvl">Top 100</span></li>
+<li><span class="date">2024</span><div><b>1st, Timelapse Coding Fest · 1st, Interschool Ideathon</b><span class="why">Inter-school coding fest at NPS Rajajinagar, and an ideathon solution built on PageRank and one-time-key encryption.</span></div><span class="lvl">1st place</span></li>
+<li><span class="date">2022–23</span><div><b>Interschool robotics and coding wins</b><span class="why">Including a remote-control car built with a BLDC motor and Arduino.</span></div><span class="lvl">Winner</span></li>
+</ul>
+</details>
+<details>
+<summary><span>Olympiads &amp; Quizzing</span><span class="count">2</span></summary>
+<ul class="rows">
+<li><span class="date">2022</span><div><b>International Rank 1, SOF English Olympiad</b><span class="why">Grade 9.</span></div><span class="lvl">Rank 1</span></li>
+<li><span class="date">2020</span><div><b>First Runner-up, The Hindu Young World Quiz</b><span class="why">Among 200 teams across South India. <a href="https://www.thehindu.com/news/cities/bangalore/sri-aurobindo-christ-academy-ace-the-hindu-young-world-quiz/article30678642.ece" rel="noopener" target="_blank">The Hindu coverage ↗</a></span></div><span class="lvl">Runner-up</span></li>
+</ul>
+</details>
+<details>
+<summary><span>Sport</span><span class="count">1</span></summary>
+<ul class="rows">
+<li><span class="date">Before Gr. 9</span><div><b>Competitive swimming</b><span class="why">Competed in swimming before high school.</span></div><span class="lvl">Swimming</span></li>
+</ul>
+</details>
+</div>
+</div>
+</section>
+<section id="contact">
+<div class="wrap sec contact">
+<div>
+<span class="pill">Contact</span>
+<h2>Let's talk</h2>
+<p>I'm always glad to hear from researchers, doctors, musicians and students who want to build things that help people. Email is the fastest way to reach me.</p>
+</div>
+<div class="c-list">
+<div class="c-row"><div><small>Email</small><span class="val" id="email">ilinamukherjee2020@gmail.com</span></div><button class="copy" id="copy-email" type="button">Copy</button></div>
+<div class="c-row"><div><small>GitHub</small><span class="val">ilinamukherjee</span></div><a href="https://github.com/ilinamukherjee" rel="noopener" target="_blank">Open ↗</a></div>
+<div class="c-row"><div><small>The Lens Project</small><span class="val">thelensproject.in</span></div><a href="https://www.thelensproject.in/" rel="noopener" target="_blank">Open ↗</a></div>
+</div>
+</div>
+</section>
+</main>
+<footer><div class="wrap"><span>© 2026 Ilina Mukherjee</span><span>Bangalore, India</span></div></footer>
+<script>
+document.getElementById("copy-email").addEventListener("click", async e => {
+  const btn = e.currentTarget, el = document.getElementById("email");
+  try { await navigator.clipboard.writeText(el.textContent); btn.textContent = "Copied"; }
+  catch { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected"; }
+  setTimeout(() => { btn.textContent = "Copy"; }, 1600);
+});
+</script>
+
+</body>
+</html>
